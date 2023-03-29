@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import Cookies from 'js-cookie';
-import CheckoutWizard from '../components/CheckoutWizard';
-import Layout from '../components/Layout';
-import { Store } from '../utils/Store';
-import { useRouter } from 'next/router';
+import React, { useContext, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import Cookies from "js-cookie";
+import CheckoutWizard from "../components/CheckoutWizard";
+import Layout from "../components/Layout";
+import { Store } from "../utils/Store";
+import { useRouter } from "next/router";
 
 export default function ShippingScreen() {
   const {
@@ -20,21 +20,28 @@ export default function ShippingScreen() {
   const router = useRouter();
 
   useEffect(() => {
-    setValue('fullName', shippingAddress.fullName);
-    setValue('address', shippingAddress.address);
-    setValue('city', shippingAddress.city);
-    setValue('postalCode', shippingAddress.postalCode);
-    setValue('country', shippingAddress.country);
+    setValue("fullName", shippingAddress.fullName);
+    setValue("address", shippingAddress.address);
+    setValue("city", shippingAddress.city);
+    setValue("postalCode", shippingAddress.postalCode);
+    setValue("country", shippingAddress.country);
     setValue("number", shippingAddress.number);
   }, [setValue, shippingAddress]);
 
-  const submitHandler = ({ fullName, address, city, postalCode, country, number }) => {
+  const submitHandler = ({
+    fullName,
+    address,
+    city,
+    postalCode,
+    country,
+    number,
+  }) => {
     dispatch({
-      type: 'SAVE_SHIPPING_ADDRESS',
+      type: "SAVE_SHIPPING_ADDRESS",
       payload: { fullName, address, city, postalCode, country, number },
     });
     Cookies.set(
-      'cart',
+      "cart",
       JSON.stringify({
         ...cart,
         shippingAddress: {
@@ -43,12 +50,12 @@ export default function ShippingScreen() {
           city,
           postalCode,
           country,
-          number
+          number,
         },
       })
     );
 
-    router.push('/payment');
+    router.push("/payment");
   };
 
   return (
@@ -103,18 +110,41 @@ export default function ShippingScreen() {
         </div>
         <div className="mb-4">
           <label htmlFor="city">City</label>
-          <input
-            className="w-full"
+          <select
+            name="city"
             id="city"
+            className="w-full"
             {...register("city", {
               required: "Please enter city",
             })}
-          />
+          >
+            <option value="Deoband" selected>
+              Deoband
+            </option>
+          </select>
           {errors.city && (
             <div className="text-red-500 ">{errors.city.message}</div>
           )}
         </div>
         <div className="mb-4">
+          <label htmlFor="postalCode">Postal Code</label>
+          <select
+            name="postalCode"
+            id="postalCode"
+            className="w-full"
+            {...register("postalCode", {
+              required: "Please enter postalCode",
+            })}
+          >
+            <option value="247554" selected>
+              247554
+            </option>
+          </select>
+          {errors.postalCode && (
+            <div className="text-red-500 ">{errors.postalCode.message}</div>
+          )}
+        </div>
+        {/* <div className="mb-4">
           <label htmlFor="postalCode">Postal Code</label>
           <input
             className="w-full"
@@ -126,8 +156,26 @@ export default function ShippingScreen() {
           {errors.postalCode && (
             <div className="text-red-500 ">{errors.postalCode.message}</div>
           )}
-        </div>
+        </div> */}
         <div className="mb-4">
+          <label htmlFor="postalCode">Country</label>
+          <select
+            name="country"
+            id="country"
+            className="w-full"
+            {...register("country", {
+              required: "Please enter country",
+            })}
+          >
+            <option value="India" selected>
+              India
+            </option>
+          </select>
+          {errors.country && (
+            <div className="text-red-500 ">{errors.country.message}</div>
+          )}
+        </div>
+        {/* <div className="mb-4">
           <label htmlFor="country">Country</label>
           <input
             className="w-full"
@@ -139,7 +187,7 @@ export default function ShippingScreen() {
           {errors.country && (
             <div className="text-red-500 ">{errors.country.message}</div>
           )}
-        </div>
+        </div> */}
         <div className="mb-4 flex justify-between">
           <button className="primary-button">Next</button>
         </div>
