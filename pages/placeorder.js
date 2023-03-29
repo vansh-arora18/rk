@@ -105,17 +105,16 @@ export default function PlaceOrderScreen() {
                 <tbody>
                   {cartItems.map((item) => (
                     <tr key={item._id} className="border-b">
-                      <td>
+                      <td colSpan={1}>
                         <Link href={`/product/${item.slug}`}>
-                          <a className="flex items-center">
+                          <a className="flex items-center text-sm">
                             <Image
                               src={item.image}
                               alt={item.name}
                               width={50}
                               height={50}
                             ></Image>
-                            &nbsp;
-                            {item.name}
+                            <span ml-4>{item.name.substring(0, 13)}</span>
                           </a>
                         </Link>
                       </td>
