@@ -21,7 +21,7 @@ export default function PlaceOrderScreen() {
     cartItems.reduce((a, c) => a + c.quantity * c.cutPrice, 0)
   ); // 123.4567 => 123.46
 
-  const shippingPrice = itemsPrice > 200 ? 0 : 15;
+  const shippingPrice = itemsPrice > 200 ? 0 : 20;
   const taxPrice = round2(itemsPrice * 0);
   const totalPrice = round2(itemsPrice + shippingPrice + taxPrice);
 
