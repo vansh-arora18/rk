@@ -47,13 +47,37 @@ export default function ProductScreen(props) {
         </div>
         <div>
           <ul>
-            <li>
-              <h1 className="text-lg text-center">{product.name}</h1>
+            <li className="mt-2">
+              <h1 className="text-lg text-center font-semibold">
+                {product.name}
+              </h1>
             </li>
-            <li>Category: {product.category}</li>
-            <li>Brand: {product.brand}</li>
-            <li><p className="font-bold text-lg">₹{product.cutPrice}<span className="line-through font-normal px-1 h-1 text-sm ">₹{product.price}</span> <span className="font-normal text-sm text-green-600">({Math.round((product.price - product.cutPrice)/product.price * 100)}% off)</span></p></li>
-            <li>Description: {product.description}</li>
+            <li className="mt-2">
+              <span className="font-semibold">Category: </span>
+              {product.category}
+            </li>
+            <li className="mt-2">
+              <span className="font-semibold">Brand: </span> {product.brand}
+            </li>
+            <li className="mt-2">
+              <p className="font-bold text-lg">
+                ₹{product.cutPrice}
+                <span className="line-through font-normal px-1 h-1 text-sm ">
+                  ₹{product.price}
+                </span>{" "}
+                <span className="font-normal text-sm text-green-600">
+                  (
+                  {Math.round(
+                    ((product.price - product.cutPrice) / product.price) * 100
+                  )}
+                  % off)
+                </span>
+              </p>
+            </li>
+            <li className="my-4">
+              <span className="font-semibold">Description: </span>
+              {product.description}
+            </li>
           </ul>
         </div>
         <div>
