@@ -181,8 +181,8 @@ function OrderScreen() {
               <h2 className="mb-2 text-lg">Shipping Address</h2>
               <div>
                 {shippingAddress.fullName}, {shippingAddress.address},{" "}
-                {shippingAddress.city}, {shippingAddress.number}, 
-                 {shippingAddress.postalCode}, {shippingAddress.country}
+                {shippingAddress.city}, {shippingAddress.number},
+                {shippingAddress.postalCode}, {shippingAddress.country}
               </div>
               {isDelivered ? (
                 <div className="alert-success">Delivered at {deliveredAt}</div>
@@ -230,9 +230,9 @@ function OrderScreen() {
                         </Link>
                       </td>
                       <td className=" p-5 text-right">{item.quantity}</td>
-                      <td className="p-5 text-right">${item.price}</td>
+                      <td className="p-5 text-right">${item.cutPrice}</td>
                       <td className="p-5 text-right">
-                        ${item.quantity * item.price}
+                        ${item.quantity * item.cutPrice}
                       </td>
                     </tr>
                   ))}
@@ -247,25 +247,25 @@ function OrderScreen() {
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Items</div>
-                    <div>${itemsPrice}</div>
+                    <div>₹{itemsPrice}</div>
                   </div>
                 </li>{" "}
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Tax</div>
-                    <div>${taxPrice}</div>
+                    <div>₹{taxPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Shipping</div>
-                    <div>${shippingPrice}</div>
+                    <div>₹{shippingPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Total</div>
-                    <div>${totalPrice}</div>
+                    <div>₹{totalPrice}</div>
                   </div>
                 </li>
                 {!isPaid && !session.user.isAdmin && (
