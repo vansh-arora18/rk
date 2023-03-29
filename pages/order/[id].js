@@ -225,7 +225,7 @@ function OrderScreen() {
                               height={50}
                             ></Image>
                             &nbsp;
-                            {item.name}
+                            {item.name.substring(0, 13)}
                           </a>
                         </Link>
                       </td>
