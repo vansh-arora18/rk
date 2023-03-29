@@ -2,7 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/productItem/[category]": "pages/productItem/[category].js",
+  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
+  "/api/admin/products": "pages/api/admin/products.js",
   "/": "pages/index.js",
-  "/api/products/[id]": "pages/api/products/[id].js"
+  "/api/admin/products/[id]": "pages/api/admin/products/[id].js"
 }

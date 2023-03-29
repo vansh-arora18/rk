@@ -30,15 +30,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/cart": [
+    "/admin/product/[id]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/cart.js"
+      "static/chunks/pages/admin/product/[id].js"
     ],
-    "/productItem/[category]": [
+    "/admin/products": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/productItem/[category].js"
+      "static/chunks/pages/admin/products.js"
     ]
   },
   "ampFirstPages": []
