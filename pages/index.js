@@ -57,7 +57,10 @@ export default function Home({ products, featuredProducts }) {
       </Carousel>
       <div>
         <h1 className="text-bold">Shop By Categories</h1>
-        <div className="grid grid-cols-3 gap-1 md:grid-cols-5 lg:grid-cols-10 mt-4">
+        <div
+          id="category"
+          className="grid grid-cols-3 gap-1 md:grid-cols-5 lg:grid-cols-10 mt-4"
+        >
           {categories.map((category) => {
             return (
               <>

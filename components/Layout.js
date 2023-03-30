@@ -16,10 +16,6 @@ import {
   BarsArrowDownIcon,
 } from "@heroicons/react/outline";
 
-
-
-
-
 export default function Layout({ title, children }) {
   const { status, data: session } = useSession();
 
@@ -116,34 +112,55 @@ export default function Layout({ title, children }) {
         <main className="container m-auto mt-4 px-4">{children}</main>
         <div className="md:invisible flex flex-nowrap content-evenly justify-between sticky bg-white bottom-0  h-12 shadow-inner my-4">
           <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
-            <HomeIcon class="w-8 h-6 text-grey-100" />
-            <p className="text-xs text-grey-200">Home</p>
+            <Link href="/">
+              <a className="text-lg font-bold ">
+                <HomeIcon class="w-8 h-6 text-grey-100" />
+                <p className="text-xs text-grey-200">Home</p>
+              </a>
+            </Link>
           </div>
           <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
-            <ShoppingCartIcon className="w-8 h-6 text-grey-600" />
-            <p className="text-xs text-grey-600">Cart</p>
+            <Link href="/cart">
+              <a className="p-2">
+                <ShoppingCartIcon className="w-8 h-6 text-grey-600" />
+                <p className="text-xs text-grey-600">Cart</p>
+                {cartItemsCount > 0 && (
+                  <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
+                    {cartItemsCount}
+                  </span>
+                )}
+              </a>
+            </Link>
           </div>
           <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
-            <CubeIcon className="w-8 h-6 text-grey-600" />
-            <p className="text-xs text-grey-600">Orders</p>
+            <Link href="/order-history">
+              <a>
+                <CubeIcon className="w-8 h-6 text-grey-600" />
+                <p className="text-xs text-grey-600">Orders</p>
+              </a>
+            </Link>
           </div>
-          <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
-            <svg
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-              ></path>
-            </svg>
-            <p className="text-xs text-grey-600">Categories</p>
-          </div>
+
+          <Link href="/#category">
+            <a className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                className="w-10 h-6 font-bold"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+                ></path>
+              </svg>
+              <p className="text-xs text-grey-600">Categories</p>
+            </a>
+          </Link>
         </div>
       </div>
     </>
