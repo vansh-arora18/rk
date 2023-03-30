@@ -8,6 +8,12 @@ import { Menu } from "@headlessui/react";
 import "react-toastify/dist/ReactToastify.css";
 import { Store } from "../utils/Store";
 import DropdownLink from "./DropdownLink";
+import {
+  XCircleIcon,
+  HomeIcon,
+  ShoppingCartIcon,
+  CubeIcon,
+} from "@heroicons/react/outline";
 
 export default function Layout({ title, children }) {
   const { status, data: session } = useSession();
@@ -35,8 +41,8 @@ export default function Layout({ title, children }) {
       <ToastContainer position="bottom-center" limit={1} />
 
       <div className="flex min-h-screen flex-col justify-between ">
-        <header>
-          <nav className="flex h-12 items-center px-4 justify-between shadow-md">
+        <header className="sticky top-0 z-auto bg-white">
+          <nav className="flex  h-12 items-center px-4 justify-between shadow-md">
             <Link href="/">
               <a className="text-lg font-bold">RK Confectionery</a>
             </Link>
@@ -103,6 +109,22 @@ export default function Layout({ title, children }) {
           </nav>
         </header>
         <main className="container m-auto mt-4 px-4">{children}</main>
+        <div className="md:invisible flex content-evenly sticky bg-white bottom-0  h-12 shadow-inner">
+          <div>
+            <HomeIcon class="h-8 w-8 text-gray-500" />
+            <p>Home</p>
+          </div>
+
+          <div>
+            <ShoppingCartIcon className="h-8 w-8 text-gray-500" />
+            <p>Cart</p>
+          </div>
+
+          <div>
+            <CubeIcon className="h-8 w-8 text-gray-500" />
+            <p>Orders</p>
+          </div>
+        </div>
         <footer className="flex h-10 justify-center items-center shadow-inner">
           <p>Copyright © 2022 RK Confectionery</p>
         </footer>
