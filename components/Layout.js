@@ -112,20 +112,20 @@ export default function Layout({ title, children }) {
         <main className="container m-auto mt-4 px-4">{children}</main>
         <div className="md:invisible flex flex-nowrap content-evenly justify-between sticky bg-white bottom-0  h-12 shadow-inner my-4">
           <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
-            <HomeIcon class="w-8 text-grey-500" />
-            <p>Home</p>
+            <HomeIcon class="w-8 text-blue-600" />
+            <p className="text-xs">Home</p>
           </div>
           <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
-            <ShoppingCartIcon className="w-8 text-grey-500" />
-            <p>Cart</p>
+            <ShoppingCartIcon className="w-8 text-blue-600" />
+            <p className="text-xs">Cart</p>
           </div>
           <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
-            <CubeIcon className="w-8 text-grey-500" />
-            <p>Orders</p>
+            <CubeIcon className="w-8 text-blue-600" />
+            <p className="text-xs">Orders</p>
           </div>
           <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
-            <CubeIcon className="w-8 text-grey-500" />
-            <p>Categories</p>
+            <CubeIcon className="w-8 text-blue-600" />
+            <p className="text-xs">Categories</p>
           </div>
         </div>
       </div>
