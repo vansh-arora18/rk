@@ -9,10 +9,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { Store } from "../utils/Store";
 import DropdownLink from "./DropdownLink";
 import {
-  XCircleIcon,
   HomeIcon,
   ShoppingCartIcon,
   CubeIcon,
+  RectangleGroupIcon,
+  QueueListIcon,
 } from "@heroicons/react/outline";
 
 export default function Layout({ title, children }) {
@@ -109,20 +110,22 @@ export default function Layout({ title, children }) {
           </nav>
         </header>
         <main className="container m-auto mt-4 px-4">{children}</main>
-        <div className="md:invisible flex content-evenly sticky bg-white bottom-0  h-12 shadow-inner">
-          <div>
-            <HomeIcon class="h-8 w-8 text-gray-500" />
+        <div className="md:invisible flex flex-nowrap content-evenly justify-between sticky bg-white bottom-0  h-12 shadow-inner my-4">
+          <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
+            <HomeIcon class="w-8 text-grey-500" />
             <p>Home</p>
           </div>
-
-          <div>
-            <ShoppingCartIcon className="h-8 w-8 text-gray-500" />
+          <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
+            <ShoppingCartIcon className="w-8 text-grey-500" />
             <p>Cart</p>
           </div>
-
-          <div>
-            <CubeIcon className="h-8 w-8 text-gray-500" />
+          <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
+            <CubeIcon className="w-8 text-grey-500" />
             <p>Orders</p>
+          </div>
+          <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
+            <CubeIcon className="w-8 text-grey-500" />
+            <p>Categories</p>
           </div>
         </div>
       </div>
