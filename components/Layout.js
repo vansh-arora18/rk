@@ -125,9 +125,6 @@ export default function Layout({ title, children }) {
             <p>Orders</p>
           </div>
         </div>
-        <footer className="flex h-10 justify-center items-center shadow-inner">
-          <p>Copyright © 2022 RK Confectionery</p>
-        </footer>
       </div>
     </>
   );
