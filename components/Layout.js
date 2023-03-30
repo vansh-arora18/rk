@@ -12,9 +12,10 @@ import {
   HomeIcon,
   ShoppingCartIcon,
   CubeIcon,
-  RectangleGroupIcon,
-  QueueListIcon,
+  CircleStackIcon,
 } from "@heroicons/react/outline";
+
+
 
 export default function Layout({ title, children }) {
   const { status, data: session } = useSession();
@@ -112,20 +113,20 @@ export default function Layout({ title, children }) {
         <main className="container m-auto mt-4 px-4">{children}</main>
         <div className="md:invisible flex flex-nowrap content-evenly justify-between sticky bg-white bottom-0  h-12 shadow-inner my-4">
           <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
-            <HomeIcon class="w-8 text-blue-600" />
-            <p className="text-xs">Home</p>
+            <HomeIcon class="w-8 h-6 text-grey-100" />
+            <p className="text-xs text-grey-200">Home</p>
           </div>
           <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
-            <ShoppingCartIcon className="w-8 text-blue-600" />
-            <p className="text-xs">Cart</p>
+            <ShoppingCartIcon className="w-8 h-6 text-grey-600" />
+            <p className="text-xs text-grey-600">Cart</p>
           </div>
           <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
-            <CubeIcon className="w-8 text-blue-600" />
-            <p className="text-xs">Orders</p>
+            <CubeIcon className="w-8 h-6 text-grey-600" />
+            <p className="text-xs text-grey-600">Orders</p>
           </div>
           <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
-            <CubeIcon className="w-8 text-blue-600" />
-            <p className="text-xs">Categories</p>
+            <CubeIcon className="w-8 h-6 text-grey-600" />
+            <p className="text-xs text-grey-600">Categories</p>
           </div>
         </div>
       </div>
