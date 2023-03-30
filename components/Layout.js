@@ -122,13 +122,8 @@ export default function Layout({ title, children }) {
           <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
             <Link href="/cart">
               <a className="p-2">
-                <ShoppingCartIcon className="w-8 h-6 text-grey-600" />
+                  <ShoppingCartIcon className="w-8 h-6 text-grey-600" />
                 <p className="text-xs text-grey-600">Cart</p>
-                {cartItemsCount > 0 && (
-                  <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
-                    {cartItemsCount}
-                  </span>
-                )}
               </a>
             </Link>
           </div>
