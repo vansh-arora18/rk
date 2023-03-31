@@ -113,7 +113,7 @@ export default function Layout({ title, children }) {
         <div className="md:invisible flex flex-nowrap content-evenly justify-between sticky bg-white bottom-0  h-12 shadow-inner my-4">
           <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
             <Link href="/">
-              <a>
+              <a className="bg-white">
                 <HomeIcon class="w-8 h-6 text-grey-100" />
                 <p className="text-xs text-grey-600">Home</p>
               </a>
