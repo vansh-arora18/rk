@@ -172,7 +172,11 @@ function OrderScreen() {
       <h1 className="mb-4 text-xl alert-success">
         Thanks! Your Order has been confirmed!
       </h1>
-      
+
+      <h1 className="my-4 mx-1.5">
+        <Link href="/">Keep Shopping!</Link>
+      </h1>
+
       {loading ? (
         <div>Loading...</div>
       ) : error ? (
