@@ -56,7 +56,7 @@ export default function Home({ products, featuredProducts }) {
         ))}
       </Carousel>
       <div>
-        <h1 className="text-bold">Shop By Categories</h1>
+        <h1 className="text-bold my-7">Shop By Categories</h1>
         <div
           id="category"
           className="grid grid-cols-3 gap-1 md:grid-cols-5 lg:grid-cols-10 mt-4"
@@ -78,7 +78,7 @@ export default function Home({ products, featuredProducts }) {
           })}
         </div>
       </div>
-      <h2 className="h2 my-4">Latest Products</h2>
+      <h2 className="h2 my-7">Latest Products</h2>
       <div className="grid grid-cols-2 gap-1 md:grid-cols-5 lg:grid-cols-7">
         {products.map((product) => (
           <ProductItem
