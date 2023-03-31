@@ -30,10 +30,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/unauthorized": [
+    "/order/[id]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/unauthorized.js"
+      "static/chunks/pages/order/[id].js"
     ]
   },
   "ampFirstPages": []

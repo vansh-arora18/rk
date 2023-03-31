@@ -46,7 +46,7 @@ export default function Home({ products, featuredProducts }) {
     <Layout title="Home Page">
       <Carousel showThumbs={false} autoPlay>
         {featuredProducts.map((product) => (
-          <div key={product._id}>
+          <div key={product._id} className="z-10">
             <Link href={`/product/${product.slug}`} passHref>
               <a className="flex">
                 <img src={product.banner} alt={product.name} />

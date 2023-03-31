@@ -42,7 +42,7 @@ export default function Layout({ title, children }) {
       <ToastContainer position="bottom-center" limit={1} />
 
       <div className="flex min-h-screen flex-col justify-between ">
-        <header className="sticky top-0 z-auto bg-white">
+        <header className="sticky top-0 z-50 bg-white">
           <nav className="flex  h-12 items-center px-4 justify-between shadow-md">
             <Link href="/">
               <a className="text-lg font-bold">RK Confectionery</a>
@@ -122,7 +122,7 @@ export default function Layout({ title, children }) {
           <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
             <Link href="/cart">
               <a className="p-2">
-                  <ShoppingCartIcon className="w-8 h-6 text-grey-600" />
+                <ShoppingCartIcon className="w-8 h-6 text-grey-600" />
                 <p className="text-xs text-grey-600">Cart</p>
               </a>
             </Link>
