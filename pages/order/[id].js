@@ -169,7 +169,10 @@ function OrderScreen() {
 
   return (
     <Layout title={`Order ${orderId}`}>
-      <h1 className="mb-4 text-xl">{`Order ${orderId}`}</h1>
+      <h1 className="mb-4 text-xl alert-success">
+        Thanks! Your Order has been confirmed!
+      </h1>
+      
       {loading ? (
         <div>Loading...</div>
       ) : error ? (
