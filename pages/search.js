@@ -124,11 +124,7 @@ export async function getServerSideProps({ query }) {
       ? { price: 1 }
       : sort === "highest"
       ? { price: -1 }
-      : sort === "toprated"
-      ? { rating: -1 }
-      : sort === "newest"
-      ? { createdAt: -1 }
-      : { _id: -1 };
+      : {};
 
   await db.connect();
   const productDocs = await Product.find({

@@ -127,11 +127,11 @@ export default function Layout({ title, children }) {
           <input
             onChange={(e) => setQuery(e.target.value)}
             type="text"
-            className="w-300"
+            className="w-screen ml-9"
             placeholder="Search products"
           />
           <button
-            className="border ml-2 rounded px-1"
+            className=" ml-2 px-1 relative right-10"
             type="submit"
             id="button-addon2"
           >
