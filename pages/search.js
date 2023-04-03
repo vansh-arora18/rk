@@ -14,21 +14,11 @@ const PAGE_SIZE = 6;
 export default function Search(props) {
   const router = useRouter();
 
-  const {
-    query = "all",
-    sort = "featured",
-    page = 1,
-  } = router.query;
+  const { query = "all", sort = "featured", page = 1 } = router.query;
 
   const { products, countProducts, pages } = props;
 
-  const filterSearch = ({
-    page,
-    sort,
-    min,
-    max,
-    searchQuery,
-  }) => {
+  const filterSearch = ({ page, sort, min, max, searchQuery }) => {
     const { query } = router;
     if (page) query.page = page;
     if (searchQuery) query.searchQuery = searchQuery;
@@ -111,18 +101,22 @@ export default function Search(props) {
 
 export async function getServerSideProps({ query }) {
   const pageSize = PAGE_SIZE;
-  const page = query.page ||  1;
+  const page = query.page || 1;
   const sort = query.sort || "";
   const searchQuery = query.query || "";
 
-  const queryFilter =
-    searchQuery
-      ? {
-          name: {
-            $regex: searchQuery,
-            $options: "i",
-          },
-        }:{}
+  const queryFilter = searchQuery
+    ? {
+        name: {
+          $regex: searchQuery,
+          $options: "i",
+        },
+        description: {
+          $regex: searchQuery,
+          $options: "i",
+        },
+      }
+    : {};
   const order =
     sort === "featured"
       ? { isFeatured: -1 }
@@ -137,18 +131,16 @@ export async function getServerSideProps({ query }) {
       : { _id: -1 };
 
   await db.connect();
-  const productDocs = await Product.find(
-    {
-      ...queryFilter,
-    },
-  )
+  const productDocs = await Product.find({
+    ...queryFilter,
+  })
     .sort(order)
     .skip(pageSize * (page - 1))
     .limit(pageSize)
     .lean();
 
   const countProducts = await Product.countDocuments({
-    ...queryFilter
+    ...queryFilter,
   });
 
   await db.disconnect();
