@@ -6,6 +6,9 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Layout from "../../../components/Layout";
 import { getError } from "../../../utils/error";
+import db from "../../../utils/db";
+import Product from "../../../models/Product";
+
 
 function reducer(state, action) {
   switch (action.type) {
@@ -36,7 +39,7 @@ function reducer(state, action) {
       return state;
   }
 }
-export default function AdminProductEditScreen() {
+export default function AdminProductEditScreen({ products }) {
   const { query } = useRouter();
 
   const productId = query.id;
@@ -45,6 +48,21 @@ export default function AdminProductEditScreen() {
       loading: true,
       error: "",
     });
+
+  var categories = new Set();
+
+  // useEffect(() => {
+  const fun = () => {
+    products.map((product) => {
+      categories.add(product.category);
+    });
+
+    categories = Array.from(categories);
+  };
+  fun();
+  // }, [products]);
+
+  console.log(categories);
 
   const {
     register,
@@ -61,8 +79,8 @@ export default function AdminProductEditScreen() {
         dispatch({ type: "FETCH_SUCCESS" });
         setValue("name", data.name);
         setValue("slug", data.slug);
-        setValue("price", data.price);   
-        setValue("cutPrice", data.cutPrice);       
+        setValue("price", data.price);
+        setValue("cutPrice", data.cutPrice);
         setValue("image", data.image);
         setValue("category", data.category);
         setValue("brand", data.brand);
@@ -251,14 +269,35 @@ export default function AdminProductEditScreen() {
               </div>
               <div className="mb-4">
                 <label htmlFor="category">category</label>
-                <input
-                  type="text"
-                  className="w-full"
+                <select
+                  name="category"
                   id="category"
+                  className="w-full"
                   {...register("category", {
                     required: "Please enter category",
                   })}
-                />
+                >
+                  {[
+                    "bakery",
+                    "Biscuits",
+                    "breakfast",
+                    "cakes",
+                    "Chocolates",
+                    "dietfood",
+                    "drinks",
+                    "frozen",
+                    "gift",
+                    "munchies",
+                    "Namkeens",
+                    "refreshments",
+                  ].map((category) => {
+                    return (
+                      <>
+                        <option value={category}>{category}</option>
+                      </>
+                    );
+                  })}
+                </select>
                 {errors.category && (
                   <div className="text-red-500">{errors.category.message}</div>
                 )}
@@ -323,6 +362,16 @@ export default function AdminProductEditScreen() {
       </div>
     </Layout>
   );
+}
+
+export async function getServerSideProps() {
+  await db.connect();
+  const products = await Product.find().lean();
+  return {
+    props: {
+      products: products.map(db.convertDocToObj),
+    },
+  };
 }
 
 AdminProductEditScreen.auth = { adminOnly: true };

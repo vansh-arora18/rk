@@ -8,6 +8,8 @@ import { Menu } from "@headlessui/react";
 import "react-toastify/dist/ReactToastify.css";
 import { Store } from "../utils/Store";
 import DropdownLink from "./DropdownLink";
+import { useRouter } from "next/router";
+import { SearchIcon } from "@heroicons/react/outline";
 import {
   HomeIcon,
   ShoppingCartIcon,
@@ -25,6 +27,14 @@ export default function Layout({ title, children }) {
   useEffect(() => {
     setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
   }, [cart.cartItems]);
+
+  const [query, setQuery] = useState("");
+
+  const router = useRouter();
+  const submitHandler = (e) => {
+    e.preventDefault();
+    router.push(`/search?query=${query}`);
+  };
 
   const logoutClickHandler = () => {
     Cookies.remove("cart");
@@ -109,6 +119,20 @@ export default function Layout({ title, children }) {
             </div>
           </nav>
         </header>
+        <form
+          onSubmit={submitHandler}
+          className="flex justify-center w-screen mt-2"
+        >
+          <input
+            onChange={(e) => setQuery(e.target.value)}
+            type="text"
+            className="w-300"
+            placeholder="Search products"
+          />
+          <button className="border ml-2 rounded px-1" type="submit" id="button-addon2">
+            <SearchIcon className="h-5 w-5"></SearchIcon>
+          </button>
+        </form>
         <main className="container m-auto mt-4 px-4">{children}</main>
         <div className="md:invisible flex flex-nowrap content-evenly justify-between sticky bg-white bottom-0  h-12 shadow-inner my-4">
           <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">

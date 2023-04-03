@@ -14,7 +14,7 @@ export default function PlaceOrderScreen() {
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
   const { cartItems, shippingAddress, paymentMethod } = cart;
-
+  const [number, setNumber] = useState("");
   const round2 = (num) => Math.round(num * 100 + Number.EPSILON) / 100;
 
   const itemsPrice = round2(
@@ -34,9 +34,45 @@ export default function PlaceOrderScreen() {
 
   const [loading, setLoading] = useState(false);
 
+  const header = {
+    headers: {
+      Authorization:
+        "Bearer EAAK3g3EM7g8BAKctddjP3dSCBTEoc5ygqrcMV79OsTyPUZBGF4RggjqjhGmBaATZA3hAUeydZC5EQH2YTvrtrWVrar8RUciWeksQ6ZAmwfoT7Pq9E9NyxF6oMJnYPb6XxaCCvcOScpyWWwLdo08cPtaCEN3EOaxpGmh44ctKgilrHmafNOucJIYqlh5IeEKimrnt1SjXuAZDZD",
+      Accept: "application/json",
+    },
+  };
+
+  const sendMsg = () => {
+    const body = {
+      messaging_product: "whatsapp",
+      to: "917017830450",
+      type: "template",
+      template: {
+        name: "hello_world",
+        language: {
+          code: "en_US",
+        },
+      },
+    };
+    axios
+      .post(
+        "https://graph.facebook.com/v16.0/116141904768570/messages",
+        body,
+        header
+      )
+      .then((res) => {
+        console.log("message successfully send", res);
+      })
+      .catch((err) => {
+        console.log("error while sending message", err);
+      });
+  };
+
   const placeOrderHandler = async () => {
     try {
       setLoading(true);
+      console.log(typeof shippingAddress.number);
+      setNumber(shippingAddress.number);
       const { data } = await axios.post("/api/orders", {
         orderItems: cartItems,
         shippingAddress,
@@ -76,8 +112,8 @@ export default function PlaceOrderScreen() {
             <div className="card  p-5">
               <h2 className="mb-2 text-lg">Shipping Address</h2>
               <div>
-                {shippingAddress.fullName}, {shippingAddress.address},{" "}
-                {shippingAddress.city}, {shippingAddress.postalCode},{" "}
+                {shippingAddress.fullName}, {shippingAddress.address},
+                {shippingAddress.city}, {shippingAddress.postalCode},
                 {shippingAddress.country}, {shippingAddress.number}
               </div>
               <div>
@@ -163,7 +199,9 @@ export default function PlaceOrderScreen() {
                 <li>
                   <button
                     disabled={loading}
-                    onClick={placeOrderHandler}
+                    onClick={() => {
+                      placeOrderHandler(), sendMsg();
+                    }}
                     className="primary-button w-full"
                   >
                     {loading ? "Loading..." : "Place Order"}
