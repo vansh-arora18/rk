@@ -16,6 +16,7 @@ import {
   CubeIcon,
   ViewColumnsIcon,
   BarsArrowDownIcon,
+  MagnifyingGlassIcon,
 } from "@heroicons/react/outline";
 
 export default function Layout({ title, children }) {
@@ -51,7 +52,7 @@ export default function Layout({ title, children }) {
 
       <ToastContainer position="bottom-center" limit={1} />
 
-      <div className="flex min-h-screen flex-col justify-between ">
+      <div className="flex min-h-screen flex-col justify-between " id="search">
         <header className="sticky top-0 z-50 bg-white">
           <nav className="flex  h-12 items-center px-4 justify-between shadow-md">
             <Link href="/">
@@ -129,7 +130,11 @@ export default function Layout({ title, children }) {
             className="w-300"
             placeholder="Search products"
           />
-          <button className="border ml-2 rounded px-1" type="submit" id="button-addon2">
+          <button
+            className="border ml-2 rounded px-1"
+            type="submit"
+            id="button-addon2"
+          >
             <SearchIcon className="h-5 w-5"></SearchIcon>
           </button>
         </form>
@@ -156,6 +161,28 @@ export default function Layout({ title, children }) {
               <a>
                 <CubeIcon className="w-8 h-6 text-grey-600" />
                 <p className="text-xs text-grey-600">Orders</p>
+              </a>
+            </Link>
+          </div>
+          <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
+            <Link href="#search">
+              <a>
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  className="w-10 h-6 font-bold"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                  ></path>
+                </svg>
+                <p className="text-xs text-grey-600">Search</p>
               </a>
             </Link>
           </div>
