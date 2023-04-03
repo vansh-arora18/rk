@@ -107,10 +107,6 @@ export async function getServerSideProps({ query }) {
 
   const queryFilter = searchQuery
     ? {
-        name: {
-          $regex: searchQuery,
-          $options: "i",
-        },
         description: {
           $regex: searchQuery,
           $options: "i",
