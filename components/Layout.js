@@ -120,7 +120,7 @@ export default function Layout({ title, children }) {
             </div>
           </nav>
         </header>
-        <form
+        {/* <form
           onSubmit={submitHandler}
           className="flex justify-center w-screen mt-2"
         >
@@ -137,7 +137,7 @@ export default function Layout({ title, children }) {
           >
             <SearchIcon className="h-5 w-5"></SearchIcon>
           </button>
-        </form>
+        </form> */}
         <main className="container m-auto mt-4 px-4">{children}</main>
         <div className="md:invisible flex flex-nowrap content-evenly justify-between sticky bg-white bottom-0  h-12 shadow-inner my-4">
           <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
@@ -165,7 +165,7 @@ export default function Layout({ title, children }) {
             </Link>
           </div>
           <div className="basis-1/3 flex  flex-col justify-items-center items-center  align-center justify-center">
-            <Link href="#search">
+            <Link href="/search1#search">
               <a>
                 <svg
                   fill="none"
