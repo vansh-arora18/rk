@@ -19,6 +19,7 @@ function search1() {
 
   return (
     <Layout title="Place Order">
+      <div className="my-2 ml-1">Search Products</div>
       <form
         onSubmit={submitHandler}
         className="flex justify-center w-screen mt-2"
@@ -38,6 +39,9 @@ function search1() {
           <SearchIcon className="h-5 w-5"></SearchIcon>
         </button>
       </form>
+      <div className="h-screen flex text- align-center justify-center  items-center">
+        Your every single search is precious for us.
+      </div>
     </Layout>
   );
 }
