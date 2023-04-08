@@ -56,6 +56,7 @@ function search1({ products }) {
           placeholder="Search products"
           ref={inputRef}
           value={query}
+          autoFocus
         />
         <button
           className=" ml-2 px-1 relative right-10"

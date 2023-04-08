@@ -85,7 +85,6 @@ export default function ShippingScreen() {
           <input
             className="w-full"
             id="number"
-            autoFocus
             {...register("number", {
               required: "Please enter phone number",
             })}
@@ -127,7 +126,7 @@ export default function ShippingScreen() {
           )}
         </div>
         <div className="mb-4">
-          <label htmlFor="postalCode">Postal Code</label>
+          <label htmlFor="postalCode">PIN Code</label>
           <select
             name="postalCode"
             id="postalCode"
