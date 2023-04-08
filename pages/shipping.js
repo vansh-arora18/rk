@@ -112,6 +112,7 @@ export default function ShippingScreen() {
           <select
             name="city"
             id="city"
+            value="Deoband"
             className="w-full"
             {...register("city", {
               required: "Please enter city",
@@ -129,6 +130,7 @@ export default function ShippingScreen() {
           <label htmlFor="postalCode">PIN Code</label>
           <select
             name="postalCode"
+            value="247554"
             id="postalCode"
             className="w-full"
             {...register("postalCode", {
@@ -157,8 +159,9 @@ export default function ShippingScreen() {
           )}
         </div> */}
         <div className="mb-4">
-          <label htmlFor="postalCode">Country</label>
+          <label htmlFor="country">Country</label>
           <select
+            value="India"
             name="country"
             id="country"
             className="w-full"

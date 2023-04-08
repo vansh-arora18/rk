@@ -9,12 +9,11 @@ import ProductItem from "../components/ProductItem";
 function search1({ products }) {
   const [query, setQuery] = useState("");
   const router = useRouter();
-  const submitHandler = (e) => {
-    e.preventDefault();
+  const submitHandler = () => {
     router.push(`/search?query=${query}`);
   };
 
-  var data;
+  // var data;
 
   // useEffect(() => {
   //   const changing = () => {
@@ -32,8 +31,9 @@ function search1({ products }) {
 
   var mySet1 = new Set();
 
-  const change = (name) => {
+  const change = (name, e) => {
     setQuery(name);
+    submitHandler();
   };
 
   const inputRef = useRef();
@@ -80,7 +80,11 @@ function search1({ products }) {
           })
           .map((e) => {
             return (
-              <button className="w-full border" onClick={() => change(e.brand)}>
+              <button
+                className="w-full border"
+                type="submit"
+                onClick={() => change(e.brand, e)}
+              >
                 {e.name}
               </button>
             );
