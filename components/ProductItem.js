@@ -17,11 +17,42 @@ export default function ProductItem({ product, addToCartHandler }) {
       <div className="flex flex-col items-center justify-center text-xs leading-3 mt-2">
         <Link href={`/product/${product.slug}`}>
           <a>
-            <h2 className="text-sm text-auto text-center mt-1">{product.name}</h2>
+            <h2 className="text-sm text-auto text-center mt-1">
+              {product.name}
+            </h2>
           </a>
         </Link>
         <p className="mb-2">{product.brand}</p>
-        <p className="font-bold text text-sm text-lg ">₹{product.cutPrice}<span className="line-through font-normal px-1 h-1 text-sm ">₹{product.price}</span> <span className="font-normal text-sm text-green-600">({Math.round((product.price - product.cutPrice)/product.price * 100)}% off)</span></p>
+        {product.cutPrice === product.price ? (
+          <p className="font-bold text text-sm text-lg ">₹{product.cutPrice}</p>
+        ) : (
+          <p className="font-bold text text-sm text-lg ">
+            ₹{product.cutPrice}
+            <span className="line-through font-normal px-1 h-1 text-sm ">
+              ₹{product.price}
+            </span>
+            <span className="font-normal text-sm text-green-600">
+              (
+              {Math.round(
+                ((product.price - product.cutPrice) / product.price) * 100
+              )}
+              % off)
+            </span>
+          </p>
+        )}
+        {/* <p className="font-bold text text-sm text-lg ">
+          ₹{product.cutPrice}
+          <span className="line-through font-normal px-1 h-1 text-sm ">
+            ₹{product.price}
+          </span>{" "}
+          <span className="font-normal text-sm text-green-600">
+            (
+            {Math.round(
+              ((product.price - product.cutPrice) / product.price) * 100
+            )}
+            % off)
+          </span>
+        </p> */}
         <button
           className="primary-button mt-2"
           type="button"

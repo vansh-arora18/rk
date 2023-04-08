@@ -76,21 +76,20 @@ export default function AdminProdcutsScreen() {
     }
   }, [successDelete]);
 
-
-   const deleteHandler = async (productId) => {
-     if (!window.confirm("Are you sure?")) {
-       return;
-     }
-     try {
-       dispatch({ type: "DELETE_REQUEST" });
-       await axios.delete(`/api/admin/products/${productId}`);
-       dispatch({ type: "DELETE_SUCCESS" });
-       toast.success("Product deleted successfully");
-     } catch (err) {
-       dispatch({ type: "DELETE_FAIL" });
-       toast.error(getError(err));
-     }
-   };
+  const deleteHandler = async (productId) => {
+    if (!window.confirm("Are you sure?")) {
+      return;
+    }
+    try {
+      dispatch({ type: "DELETE_REQUEST" });
+      await axios.delete(`/api/admin/products/${productId}`);
+      dispatch({ type: "DELETE_SUCCESS" });
+      toast.success("Product deleted successfully");
+    } catch (err) {
+      dispatch({ type: "DELETE_FAIL" });
+      toast.error(getError(err));
+    }
+  };
   return (
     <Layout title="Admin Products">
       <div className="grid md:grid-cols-4 md:gap-5">
@@ -139,7 +138,6 @@ export default function AdminProdcutsScreen() {
                     <th className="p-5 text-left">CUT-PRICE</th>
                     <th className="p-5 text-left">CATEGORY</th>
                     <th className="p-5 text-left">COUNT</th>
-                    <th className="p-5 text-left">RATING</th>
                     <th className="p-5 text-left">ACTIONS</th>
                   </tr>
                 </thead>
@@ -147,12 +145,11 @@ export default function AdminProdcutsScreen() {
                   {products.map((product) => (
                     <tr key={product._id} className="border-b">
                       <td className=" p-5 ">{product._id.substring(20, 24)}</td>
-                      <td className=" p-5 ">{product.name}</td>
+                      <td className=" p-5 ">{product.name.substring(0, 20)}</td>
                       <td className=" p-5 ">₹{product.price}</td>
                       <td className=" p-5 ">₹{product.cutPrice}</td>
                       <td className=" p-5 ">{product.category}</td>
                       <td className=" p-5 ">{product.countInStock}</td>
-                      <td className=" p-5 ">{product.rating}</td>
                       <td className=" p-5 ">
                         <Link href={`/admin/product/${product._id}`}>Edit</Link>
                         &nbsp;
