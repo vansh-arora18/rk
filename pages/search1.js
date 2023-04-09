@@ -29,9 +29,9 @@ function search1({ products }) {
   //   console.log(data);
   // }, [query]);
 
-  var mySet1 = new Set();
+  // var mySet1 = new Set();
 
-  const change = (name, e) => {
+  const change = (name) => {
     setQuery(name);
     submitHandler();
   };
@@ -82,8 +82,7 @@ function search1({ products }) {
             return (
               <button
                 className="w-full border"
-                type="submit"
-                onClick={() => change(e.mix, e)}
+                onClick={() => change(e.mix)}
               >
                 {e.name}
               </button>

@@ -74,9 +74,9 @@ export default function ProductScreen(props) {
                 </span>
               </p>
             </li>
-            <li className="my-4">
-              <span className="font-semibold">Description: </span>
-              {product.description}
+            <li className="my-4 text-sm text-black-100">
+              <span className="font-semibold text ">Description:</span>
+              <p className="text-gray-500 mt-2">{product.description}</p>
             </li>
           </ul>
         </div>

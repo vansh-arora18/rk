@@ -30,15 +30,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/search": [
+    "/product/[slug]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/search.js"
-    ],
-    "/search1": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/search1.js"
+      "static/chunks/pages/product/[slug].js"
     ]
   },
   "ampFirstPages": []
