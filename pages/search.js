@@ -107,7 +107,7 @@ export async function getServerSideProps({ query }) {
 
   const queryFilter = searchQuery
     ? {
-        name: {
+        mix: {
           $regex: searchQuery,
           $options: "i",
         },

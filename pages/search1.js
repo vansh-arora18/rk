@@ -8,9 +8,10 @@ import ProductItem from "../components/ProductItem";
 
 function search1({ products }) {
   const [query, setQuery] = useState("");
+  const [final, setFinal] = useState("");
   const router = useRouter();
-  const submitHandler = () => {
-    router.push(`/search?query=${query}`);
+  const submitHandler = (name) => {
+    router.push(`/search?query=${name}`);
   };
 
   // var data;
@@ -33,7 +34,9 @@ function search1({ products }) {
 
   const change = (name) => {
     setQuery(name);
-    submitHandler();
+    setFinal(name);
+    console.log(final);
+    submitHandler(name);
   };
 
   const inputRef = useRef();
@@ -55,7 +58,6 @@ function search1({ products }) {
           className="w-screen ml-1"
           placeholder="Search products"
           ref={inputRef}
-          value={query}
           autoFocus
         />
         <button
@@ -72,7 +74,9 @@ function search1({ products }) {
             const searchItem = query.toLowerCase();
             const fullName = product.name.toLowerCase();
             const brandName = product.brand.toLowerCase();
-            const categoryName = product.category.toLowerCase();
+            {
+              /* const categoryName = product.category.toLowerCase(); */
+            }
 
             var reg = new RegExp(`${searchItem}.`, "gi");
 
@@ -80,10 +84,7 @@ function search1({ products }) {
           })
           .map((e) => {
             return (
-              <button
-                className="w-full border"
-                onClick={() => change(e.mix)}
-              >
+              <button className="w-full border" onClick={() => change(e.mix)}>
                 {e.name}
               </button>
             );
