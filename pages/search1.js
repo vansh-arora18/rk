@@ -11,7 +11,7 @@ function search1({ products }) {
   const [final, setFinal] = useState("");
   const router = useRouter();
   const submitHandler = (name) => {
-    router.push(`/search?query=${name}`);
+    router.push(`/search?query=${name}&query2=${query}`);
   };
 
   // var data;

@@ -4,7 +4,6 @@ import { useContext } from "react";
 import { toast } from "react-toastify";
 import Layout from "../components/Layout";
 import { Store } from "../utils/Store";
-import { XCircleIcon } from "@heroicons/react/outline";
 import ProductItem from "../components/ProductItem";
 import Product from "../models/Product";
 import db from "../utils/db";
@@ -55,7 +54,7 @@ export default function Search(props) {
         <div className="md:col-span-3">
           <div className="mb-2 flex items-center justify-between border-b-2 pb-2">
             <div className="flex items-center">
-              {products.length === 0 ? "No" : countProducts} Results: {query}
+              {products.length === 0 ? "No" : countProducts} Results
               &nbsp;
             </div>
             <div>
@@ -103,7 +102,11 @@ export async function getServerSideProps({ query }) {
   const pageSize = PAGE_SIZE;
   const page = query.page || 1;
   const sort = query.sort || "";
-  const searchQuery = query.query || "";
+  const searchQuery = query.query === "[object Object]" ? "" : query.query;
+  const searchQuery2 = query.query2 || "";
+
+  // console.log(searchQuery);
+  // console.log(searchQuery2);
 
   const queryFilter = searchQuery
     ? {
@@ -112,7 +115,12 @@ export async function getServerSideProps({ query }) {
           $options: "i",
         },
       }
-    : {};
+    : {
+        name: {
+          $regex: searchQuery2,
+          $options: "i",
+        },
+      };
   const order =
     sort === "featured"
       ? { isFeatured: -1 }
