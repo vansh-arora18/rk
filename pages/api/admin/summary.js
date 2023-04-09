@@ -16,6 +16,7 @@ const handler = async (req, res) => {
   const ordersCount = await Order.countDocuments();
   const productsCount = await Product.countDocuments();
   const usersCount = await User.countDocuments();
+  
 
   const ordersPriceGroup = await Order.aggregate([
     {

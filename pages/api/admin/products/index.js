@@ -22,13 +22,14 @@ const postHandler = async (req, res) => {
   const newProduct = new Product({
     name: "sample name",
     slug: "sample-name-" + Math.random(),
-    image: "/images/shirt1.jpg",
+    image: "/images/bakery.jpg",
     price: 0,
     cutPrice: 0,
     category: "sample category",
     brand: "sample brand",
     countInStock: 0,
     description: "sample description",
+    mix: "brand+category",
     rating: 0,
     numReviews: 0,
   });

@@ -83,8 +83,10 @@ export default function ShippingScreen() {
         <div className="mb-4">
           <label htmlFor="number">Phone Number</label>
           <input
+            type="tel"
             className="w-full"
             id="number"
+            pattern="[0-9]{10}"
             {...register("number", {
               required: "Please enter phone number",
             })}

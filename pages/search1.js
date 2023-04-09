@@ -83,7 +83,7 @@ function search1({ products }) {
               <button
                 className="w-full border"
                 type="submit"
-                onClick={() => change(e.brand, e)}
+                onClick={() => change(e.mix, e)}
               >
                 {e.name}
               </button>
